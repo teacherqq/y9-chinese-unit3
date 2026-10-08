@@ -188,6 +188,48 @@
     .stroke-btn{width:34px;height:34px;font-size:.9rem}
     .fs-tzg{--tile:min(80vmin,560px);width:min(80vmin,560px);height:min(80vmin,560px)}
   }
+  /* ---- 🃏 練習詞卡 flashcards ---- */
+  .fc-toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+  .fc-mode{display:flex;border:2px solid #e2e8f0;border-radius:999px;overflow:hidden;background:#fff}
+  .fc-mode button{border:none;background:#fff;padding:9px 16px;font-weight:700;font-size:.95rem;cursor:pointer;color:var(--ink2);font-family:inherit;transition:.15s}
+  .fc-mode button+button{border-left:1px solid #e2e8f0}
+  .fc-mode button small{display:block;font-size:.62rem;color:#94a3b8;font-weight:600}
+  .fc-mode button.active{background:var(--ink);color:#fff}
+  .fc-mode button.active small{color:#cbd5e1}
+  .fc-tool{border:2px solid #e2e8f0;background:#fff;border-radius:999px;padding:8px 16px;font-size:.92rem;font-weight:700;cursor:pointer;color:var(--ink2);font-family:inherit;transition:.15s}
+  .fc-tool small{display:block;font-size:.62rem;color:#94a3b8;font-weight:600}
+  .fc-tool:hover{border-color:#94a3b8}
+  .fc-tool.on{background:var(--l2);border-color:var(--l2);color:#fff}
+  .fc-lbar{display:flex;gap:6px;flex-wrap:wrap}
+  .fc-lbar .lsel{padding:8px 14px;font-size:.9rem}
+  .fc-stage{perspective:1400px;max-width:640px;margin:0 auto}
+  .fc-card{position:relative;width:100%;height:340px;cursor:pointer;transform-style:preserve-3d;transition:transform .55s cubic-bezier(.4,.1,.2,1)}
+  .fc-card.flipped{transform:rotateY(180deg)}
+  .fc-face{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:26px;border:3px solid #e2e8f0;background:#fff;box-shadow:0 12px 30px rgba(15,23,42,.09);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:30px;text-align:center}
+  .fc-face.back{transform:rotateY(180deg);border-color:var(--l2)}
+  .fc-lbl{position:absolute;top:16px;left:20px;font-size:.78rem;font-weight:800;color:#94a3b8;letter-spacing:.05em}
+  .fc-word{font-size:3.8rem;font-weight:900;line-height:1.25}
+  .fc-tip{color:#94a3b8;font-weight:700;font-size:.88rem}
+  .fc-py{font-size:2.2rem;font-weight:800;color:var(--l2)}
+  .fc-en{font-size:1.55rem;font-weight:700;color:var(--ink)}
+  .fc-sent{font-size:1.4rem;line-height:2;font-weight:600;max-width:100%}
+  .fc-sent .gap{color:#fff;background:var(--l2);border-radius:8px;padding:2px 10px;margin:0 3px;font-weight:900;cursor:pointer;transition:.2s}
+  .fc-sent .gap.show{background:var(--ok)}
+  .fc-note{font-size:.85rem;color:#94a3b8;font-weight:600}
+  .fc-controls{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:20px}
+  .fc-btn{border:2px solid #e2e8f0;background:#fff;color:var(--ink2);border-radius:14px;padding:11px 20px;font-size:1rem;font-weight:700;cursor:pointer;font-family:inherit;transition:.15s}
+  .fc-btn:hover{transform:translateY(-2px);border-color:#94a3b8}
+  .fc-btn small{font-size:.66rem;color:#94a3b8;font-weight:600;margin-left:3px}
+  .fc-btn.ok{background:var(--ok);border-color:var(--ok);color:#fff}
+  .fc-btn.ok small{color:#e7f9f0}
+  .fc-btn.ok:hover{transform:translateY(-2px)}
+  .fc-btn.again{background:#d97706;border-color:#d97706;color:#fff}
+  .fc-btn.again small{color:#fdf0dd}
+  .fc-prog{max-width:640px;margin:20px auto 0;display:flex;flex-direction:column;gap:8px}
+  .fc-count{text-align:center;font-weight:800;color:var(--ink2);font-size:.95rem}
+  .fc-bar{height:10px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+  .fc-bar>div{height:100%;width:0;background:var(--ok);border-radius:999px;transition:.4s}
+  .fc-empty{padding:46px 30px;text-align:center;font-size:1.3rem;font-weight:800;color:var(--ink2);border:3px dashed #cbd5e1;border-radius:26px}
 </style>
 </head>
 <body>
@@ -201,6 +243,7 @@
       <a href="#write">重點詞語<small>Word Bank</small></a>
       <a href="#knowledge">成語精選<small>Idioms</small></a>
       <a href="#patterns">句式<small>Patterns</small></a>
+      <a href="#flash">練習詞卡<small>Flashcards</small></a>
       <a href="#practice">練習題<small>Practice</small></a>
     </div>
   </div>
@@ -265,6 +308,39 @@
       <div class="pat-card p2"><div class="pat">自從 …… ，……。</div><div class="pat-en">since (a point in time) — 自從 + 時間點</div><ul><li><b>自從</b>上中學後，我的煩惱多了不少。<span class="li-en">Since starting secondary school, I've had quite a few more worries.</span></li><li><b>自從</b>失業後，我一直沒有找到工作。<span class="li-en">Since losing my job, I still haven't found work.</span></li></ul></div>
       <div class="pat-card p3"><div class="pat">由於 …… ，……。</div><div class="pat-en">because of (reason) — 由於 + 原因</div><ul><li><b>由於</b>老師的教學進度很快，很多東西我都聽不懂。<span class="li-en">Because the teacher goes very fast, I can't understand many things.</span></li><li><b>由於</b>缺乏溝通，兩兄弟的感情漸漸疏遠。<span class="li-en">Due to a lack of communication, the two brothers have gradually grown apart.</span></li></ul></div>
       <div class="pat-card p4"><div class="pat">…… 。此外，還 ……。</div><div class="pat-en">besides; in addition — 引出另一點</div><ul><li>上了中學後，要學習的科目比以前多了。<b>此外</b>，還有很多功課要做。<span class="li-en">At secondary school there are more subjects than before. In addition, there is a lot of homework.</span></li><li>我每星期要上中文課。<b>此外</b>，還要完成詞語練習。<span class="li-en">I have Chinese lessons every week. Besides that, I also have to finish vocabulary exercises.</span></li></ul></div>
+    </div>
+  </section>
+
+  <section id="flash">
+    <div class="sec-head"><h2>🃏 練習詞卡</h2><span class="en">Flashcards · 翻卡自測 Flip &amp; self-test</span></div>
+    <p class="sec-desc">正面看詞語，想一想讀音、意思和用法，然後<b>點擊卡片翻面</b>核對。可以選擇反面顯示<b>拼音</b>、<b>英文</b>或<b>填空例句</b>。<span class="en-gloss">Look at the word, think of its reading, meaning and usage, then tap the card to flip and check. Choose what the back shows: pinyin, English, or a fill-in-the-blank example sentence.</span></p>
+    <div class="fc-toolbar">
+      <div class="fc-mode" id="fcMode">
+        <button data-m="py">拼音<small>Pinyin</small></button>
+        <button data-m="en">英文<small>English</small></button>
+        <button data-m="sent" class="active">填空例句<small>Fill in the blank</small></button>
+      </div>
+      <div class="fc-lbar" id="fcLessons"></div>
+      <button class="fc-tool" id="fcShuffle">🔀 隨機<small>Shuffle</small></button>
+      <button class="fc-tool" id="fcUnknown">只練未認識<small>Unknown only</small></button>
+      <button class="fc-tool" id="fcReset">↩ 重置進度<small>Reset</small></button>
+    </div>
+    <div class="fc-stage" id="fcStage">
+      <div class="fc-card" id="fcCard">
+        <div class="fc-face front" id="fcFront"></div>
+        <div class="fc-face back" id="fcBack"></div>
+      </div>
+    </div>
+    <div class="fc-controls">
+      <button class="fc-btn" id="fcPrev">◀ 上一個<small>Prev</small></button>
+      <button class="fc-btn" id="fcSpeak">🔊 讀一讀<small>Read</small></button>
+      <button class="fc-btn ok" id="fcKnow">✅ 認識了<small>Got it</small></button>
+      <button class="fc-btn again" id="fcAgain">🔁 再練習<small>Again</small></button>
+      <button class="fc-btn" id="fcNext">下一個 ▶<small>Next</small></button>
+    </div>
+    <div class="fc-prog">
+      <div class="fc-count" id="fcCount"></div>
+      <div class="fc-bar"><div id="fcBarFill"></div></div>
     </div>
   </section>
 
@@ -744,6 +820,150 @@ const PAT = [
   {q:"上了中學後，要學習的科目比以前多了。＿＿，還有很多功課要做。", en:"At secondary school there are more subjects than before. ___, there is also a lot of homework.", opts:["此外","越來越","自從"], a:"此外", note:"此外 = besides, in addition（引出另一點 adds another point）"}
 ];
 renderChoice("panel-pat", PAT, "pat");
+
+/* ---- 🃏 練習詞卡 Flashcards ---- */
+const FC_EX = {
+  "溝通":"良好的溝通能減少誤會，讓彼此關係更融洽。",
+  "擔心":"媽媽見我深夜還未回家，十分擔心我的安全。",
+  "限制":"學校限制學生使用手機的時間，以免影響學習。",
+  "選擇":"面對眾多選擇，他猶豫了很久才作決定。",
+  "天南地北":"老朋友聚在一起，天南地北地聊了整個晚上。",
+  "聯繫":"即使分隔兩地，我們仍靠電話保持聯繫。",
+  "疏遠":"長期缺乏溝通，兩兄弟的感情漸漸疏遠。",
+  "人際關係":"處理好人際關係，工作起來自然事半功倍。",
+  "和諧":"一家人互相體諒，家庭氣氛自然和諧。",
+  "開明":"我的父母很開明，從不干涉我選擇的職業。",
+  "聆聽":"我們要用心聆聽別人的意見，才能互相理解。",
+  "行行出狀元":"只要肯努力，行行出狀元，不必人人都去讀大學。",
+  "有朝一日":"只要堅持夢想，有朝一日你一定會成功。",
+  "被動":"他做事太被動，總要別人催促才行動。",
+  "暢所欲言":"這裏氣氛輕鬆，大家可以暢所欲言，不必顧慮。",
+  "靈活":"處理突發事件時，必須靈活應變，不能死守規矩。",
+  "思維方式":"東西方文化的思維方式不同，值得我們比較研究。",
+  "深思熟慮":"經過深思熟慮，他終於決定辭職創業。",
+  "衝動":"購物時不要太衝動，免得事後後悔。",
+  "面臨":"公司正面臨倒閉的危險。",
+  "運用":"他善於運用新技術來解決問題。",
+  "智慧":"他憑著智慧和努力，終於成功了。",
+  "冷靜":"遇到危險時，你一定要保持冷靜。",
+  "興致勃勃":"同學們興致勃勃地討論這次旅行的計劃。",
+  "夢寐以求":"這份工作是他夢寐以求的機會。",
+  "左右為難":"一邊是朋友，一邊是家人，讓他左右為難。",
+  "矛盾":"他心裏覺得很矛盾，不知道該聽誰的。",
+  "崇拜":"很多年輕人崇拜這位歌星。",
+  "兩全其美":"這樣做既能省錢又能省時間，真是兩全其美。",
+  "利弊得失":"做決定前要先衡量事情的利弊得失。",
+  "舉棋不定":"面對兩個選擇，他一直舉棋不定。",
+  "煩惱":"不要為了小事煩惱，開心點吧。",
+  "無所適從":"爸爸要我洗車，媽媽叫我擦窗戶，弄得我無所適從。",
+  "溫習":"學生不僅上課應該認真聽講，下課後也應該溫習功課。",
+  "寂寞":"爸爸媽媽出差了，我一個人在家裏很寂寞。",
+  "面對":"你需要面對現實，不要再幻想了。",
+  "現實":"我們要學會面對現實生活中的問題。",
+  "衝突":"溝通不好會造成人與人的衝突。",
+  "解決":"你有解決這個問題的辦法嗎？"
+};
+const FC_ALL = [];
+LESSONS.forEach(L=>L.write.forEach(w=>FC_ALL.push({word:w[0], py:w[1], en:w[2], lesson:L.no, title:L.title})));
+const FC = { mode:"sent", lesson:0, idx:0, flipped:false, known:new Set(), onlyUnknown:false, order:[] };
+try{ (JSON.parse(localStorage.getItem("y9u3_fc_known")||"[]")).forEach(w=>FC.known.add(w)); }catch(e){}
+function fcSave(){ try{ localStorage.setItem("y9u3_fc_known", JSON.stringify([...FC.known])); }catch(e){} }
+
+function fcBuildList(keepPos){
+  let idxs = FC_ALL.map((_,i)=>i).filter(i=> FC.lesson===0 || FC_ALL[i].lesson===FC.lesson);
+  if(FC.onlyUnknown) idxs = idxs.filter(i=>!FC.known.has(FC_ALL[i].word));
+  FC.order = idxs;
+  if(!keepPos || FC.idx>=FC.order.length) FC.idx = 0;
+  FC.flipped = false;
+  fcRender();
+}
+function fcShuffle(){
+  for(let i=FC.order.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [FC.order[i],FC.order[j]]=[FC.order[j],FC.order[i]]; }
+  FC.idx = 0; FC.flipped = false; fcRender();
+}
+function fcReveal(ev){
+  ev.stopPropagation();
+  const c = FC_ALL[FC.order[FC.idx]];
+  ev.target.textContent = c.word;
+  ev.target.classList.add("show");
+}
+function fcBlankSent(c){
+  const s = FC_EX[c.word] || "";
+  if(s.includes(c.word)) return s.replace(c.word, `<span class="gap" onclick="fcReveal(event)">${"＿".repeat(Math.min(c.word.length*2, 8))}</span>`);
+  return s;
+}
+function fcRender(){
+  const stage = document.getElementById("fcStage");
+  const countEl = document.getElementById("fcCount");
+  const bar = document.getElementById("fcBarFill");
+  if(!FC.order.length){
+    stage.innerHTML = `<div class="fc-empty">🎉 這裏的詞語全部認識了！<br><span class="en-gloss">All mastered here! 點「重置進度」可再來一次，或取消「只練未認識」。</span></div>`;
+    countEl.textContent = ""; bar.style.width = "100%"; return;
+  }
+  const c = FC_ALL[FC.order[FC.idx]];
+  const card = document.getElementById("fcCard");
+  card.classList.toggle("flipped", FC.flipped);
+  document.getElementById("fcFront").innerHTML =
+    `<span class="fc-lbl">正面 · 第 ${FC.idx+1} / ${FC.order.length} 張 · 第${c.lesson}課</span>
+     <div class="fc-word">${c.word}</div>
+     <div class="fc-tip">想一想讀音、意思和用法，再點擊卡片翻面 · <span class="en-gloss">Think, then tap to flip</span></div>`;
+  let backHtml;
+  if(FC.mode==="py")
+    backHtml = `<span class="fc-lbl">反面 · 拼音 Pinyin</span><div class="fc-py">${c.py}</div><div class="fc-note">跟着讀一讀 · read it aloud</div>`;
+  else if(FC.mode==="en")
+    backHtml = `<span class="fc-lbl">反面 · 英文 English</span><div class="fc-en">${c.en}</div>`;
+  else
+    backHtml = `<span class="fc-lbl">反面 · 填空例句 Fill in the blank</span><div class="fc-sent">${fcBlankSent(c)}</div><div class="fc-note">💡 想一想詞語填在哪裏，點擊空格顯示答案 · tap the blank to reveal</div>`;
+  document.getElementById("fcBack").innerHTML = backHtml;
+  const total = FC_ALL.filter(x=> FC.lesson===0 || x.lesson===FC.lesson).length;
+  const knownN = FC_ALL.filter(x=> (FC.lesson===0 || x.lesson===FC.lesson) && FC.known.has(x.word)).length;
+  countEl.textContent = `已認識 ${knownN} / ${total} 個詞語`;
+  bar.style.width = (total ? knownN/total*100 : 0) + "%";
+}
+function fcNext(step){
+  if(!FC.order.length) return;
+  FC.idx = (FC.idx + step + FC.order.length) % FC.order.length;
+  FC.flipped = false;
+  fcRender();
+}
+function fcMark(know){
+  if(!FC.order.length) return;
+  const c = FC_ALL[FC.order[FC.idx]];
+  if(know) FC.known.add(c.word); else FC.known.delete(c.word);
+  fcSave();
+  if(FC.onlyUnknown) fcBuildList(true); else fcNext(1);
+}
+document.getElementById("fcCard").onclick = ()=>{ FC.flipped=!FC.flipped; document.getElementById("fcCard").classList.toggle("flipped", FC.flipped); };
+document.getElementById("fcPrev").onclick = ()=>fcNext(-1);
+document.getElementById("fcNext").onclick = ()=>fcNext(1);
+document.getElementById("fcKnow").onclick = ()=>fcMark(true);
+document.getElementById("fcAgain").onclick = ()=>fcMark(false);
+document.getElementById("fcSpeak").onclick = ()=>{ if(FC.order.length) speak(FC_ALL[FC.order[FC.idx]].word); };
+document.getElementById("fcShuffle").onclick = fcShuffle;
+document.getElementById("fcUnknown").onclick = e=>{ FC.onlyUnknown=!FC.onlyUnknown; e.currentTarget.classList.toggle("on", FC.onlyUnknown); fcBuildList(); };
+document.getElementById("fcReset").onclick = ()=>{ FC.known.clear(); fcSave(); fcBuildList(); };
+document.querySelectorAll("#fcMode button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#fcMode button").forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  FC.mode = b.dataset.m; FC.flipped = false; fcRender();
+});
+const fcLessonBar = document.getElementById("fcLessons");
+fcLessonBar.innerHTML = `<button class="lsel on" data-l="0">全部</button>` + LESSONS.map(L=>`<button class="lsel" data-l="${L.no}">第${L.no}課</button>`).join("");
+fcLessonBar.querySelectorAll(".lsel").forEach(b=>b.onclick=()=>{
+  fcLessonBar.querySelectorAll(".lsel").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  FC.lesson = +b.dataset.l;
+  fcBuildList();
+});
+document.addEventListener("keydown", e=>{
+  const sec = document.getElementById("flash");
+  const r = sec.getBoundingClientRect();
+  if(r.bottom < 0 || r.top > innerHeight) return;
+  if(e.key==="ArrowRight") fcNext(1);
+  else if(e.key==="ArrowLeft") fcNext(-1);
+  else if(e.key===" "){ e.preventDefault(); FC.flipped=!FC.flipped; document.getElementById("fcCard").classList.toggle("flipped", FC.flipped); }
+});
+fcBuildList();
 
 /* ---- 成語卡點擊朗讀 ---- */
 document.querySelectorAll("#knowledge .fx-row").forEach(row=>{
